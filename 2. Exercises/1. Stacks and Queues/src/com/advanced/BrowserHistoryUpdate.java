@@ -1,35 +1,41 @@
 package com.advanced;
 
+
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
+
 public class BrowserHistoryUpdate {
 	public static void main(String[] args) {
-		Scanner console = new Scanner(System.in);
-		ArrayDeque<String> browser = new ArrayDeque<>();
-		ArrayDeque<String> forward = new ArrayDeque<>();
-
-		String line = console.nextLine();
-		String current = "";
-
-		while (!line.equals("Home")) {
-			if (line.equals("back")) {
-				if (!browser.isEmpty()) {
-					current = browser.pop();
+		Scanner scanner = new Scanner(System.in);
+		ArrayDeque<String> stackUrl = new ArrayDeque<>();
+		ArrayDeque<String> forwardStack = new ArrayDeque<>();
+		String input = "";
+		while (!"Home".equals(input = scanner.nextLine())) {
+			if ("back".equals(input)) {
+				if (stackUrl.size() > 1) {
+					String toRemove = stackUrl.pop();
+					forwardStack.push(toRemove);
+					System.out.println(stackUrl.peek());
 				} else {
 					System.out.println("no previous URLs");
-					line = console.nextLine();
-					continue;
 				}
-			}else{
-				if(!current.equals("")){
-					browser.push(current);
-				}
-				current = line;
+				continue;
 			}
-			System.out.println(current);
-			line = console.nextLine();
+			if ("forward".equals(input)) {
+				if (forwardStack.size() > 0) {
+					String something = forwardStack.pop();
+					System.out.println(something);
+					stackUrl.push(something);
+
+				} else {
+					System.out.println("no next URLs");
+				}
+				continue;
+			}
+			System.out.println(input);
+			stackUrl.push(input);
+			forwardStack.clear();
 		}
 	}
 }
-
