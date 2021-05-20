@@ -17,27 +17,27 @@ public class BasicQueueOperations {
                 int elementToPop = instructions[1];
                 int elementToCheck = instructions[2];
 
-                ArrayDeque<Integer> stackOfIntegers = new ArrayDeque<>();
+                ArrayDeque<Integer> queueOfIntegers = new ArrayDeque<>();
 
                 for (int i = 0; i < elementToPush; i++) {
-                    stackOfIntegers.offer(numbers[i]);
+                    queueOfIntegers.offer(numbers[i]);
                 }
                 for (int i = 0; i < elementToPop; i++) {
-                    stackOfIntegers.poll();
+                    queueOfIntegers.poll();
                 }
-                if (stackOfIntegers.contains(elementToCheck)) {
-                    System.out.println(stackOfIntegers.contains(elementToCheck));
+                if (queueOfIntegers.contains(elementToCheck)) {
+                    System.out.println(queueOfIntegers.contains(elementToCheck));
                 } else {
-                    System.out.println(smallestNumber(stackOfIntegers));
+                    System.out.println(smallestNumber(queueOfIntegers));
                 }
             }
 
-            private static int smallestNumber(ArrayDeque<Integer> stack) {
-                if(stack.isEmpty()){
+            private static int smallestNumber(ArrayDeque<Integer> queue) {
+                if(queue.isEmpty()){
                     return 0;
                 }
                 int smallestNumber = Integer.MAX_VALUE;
-                for (Integer integer : stack) {
+                for (Integer integer : queue) {
                     if (integer < smallestNumber) {
                         smallestNumber = integer;
                     }

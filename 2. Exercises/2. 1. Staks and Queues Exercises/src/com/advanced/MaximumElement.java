@@ -2,6 +2,7 @@ package com.advanced;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MaximumElement {
@@ -18,18 +19,9 @@ public class MaximumElement {
             }else if(input[0] == 2){
                 stackOfNumbers.pop();
             }else if(input[0] == 3){
-                System.out.println(maxNumber(stackOfNumbers));
+                System.out.println(Collections.max(stackOfNumbers));
             }
         }
     }
 
-    private static int maxNumber(ArrayDeque<Integer> stack) {
-        int number = Integer.MIN_VALUE;
-        for (Integer integer : stack) {
-            if(integer > number){
-                number = integer;
-            }
-        }
-        return number;
-    }
 }
