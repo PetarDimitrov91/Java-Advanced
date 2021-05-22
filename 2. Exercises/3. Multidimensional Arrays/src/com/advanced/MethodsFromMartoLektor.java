@@ -50,15 +50,15 @@ public class MethodsFromMartoLektor {
 		return sum;
 	}
 
-	public static boolean isInBounds(int row, int col, int[][] matrix) {
+	private static boolean isInBounds(int row, int col, int[][] matrix) {
 		return row >= 0 && row < matrix.length && col >= 0 && col < matrix[row].length;
 	}
 
-	public static boolean isOutOfBounds(int row, int col, int[][] matrix) {
+	private static boolean isOutOfBounds(int row, int col, int[][] matrix) {
 		return !isInBounds(row, col, matrix);
 	}
 
-	public static int[][] getMaxSumSubMatrix2By2(int[][] matrix) {
+	private static int[][] getMaxSumSubMatrix2By2(int[][] matrix) {
 		int maxSum = 0;
 
 		int bestRow = 0;
@@ -71,7 +71,6 @@ public class MethodsFromMartoLektor {
 								matrix[row][col + 1] +
 								matrix[row + 1][col] +
 								matrix[row + 1][col + 1];
-
 				if (sum > maxSum) {
 					maxSum = sum;
 					bestRow = row;
@@ -86,9 +85,8 @@ public class MethodsFromMartoLektor {
 		};
 	}
 
-	public static char[][] getMatricesIntersection(char[][] first, char[][] second) {
+	private static char[][] getMatricesIntersection(char[][] first, char[][] second) {
 		char[][] out = new char[first.length][];
-
 		for (int row = 0; row < first.length; row++) {
 			out[row] = new char[first[row].length];
 			for (int col = 0; col < first[row].length; col++) {
@@ -100,7 +98,7 @@ public class MethodsFromMartoLektor {
 		return out;
 	}
 
-	public static char[][] readMatrix(int rows, int cols, Scanner scanner) {
+	private static char[][] readMatrix(int rows, int cols, Scanner scanner) {
 		char[][] matrix = new char[rows][cols];
 
 		for (int row = 0; row < rows; row++) {
@@ -113,7 +111,7 @@ public class MethodsFromMartoLektor {
 		return matrix;
 	}
 
-	public static int getElementsSum(int[][] matrix) {
+	private static int getElementsSum(int[][] matrix) {
 		int sum = 0;
 
 		for (int[] array : matrix) {
@@ -125,13 +123,13 @@ public class MethodsFromMartoLektor {
 		return sum;
 	}
 
-	public static int getElementsSumWithStream(int[][] matrix) {
+	private static int getElementsSumWithStream(int[][] matrix) {
 		return Arrays.stream(matrix)
 				.flatMapToInt(Arrays::stream)
 				.sum();
 	}
 
-	public static List<int[]> findNumberOccurrences(int[][] matrix, int number) {
+	private static List<int[]> findNumberOccurrences(int[][] matrix, int number) {
 		List<int[]> out = new ArrayList<>();
 
 		for (int row = 0; row < matrix.length; row++) {
@@ -146,7 +144,7 @@ public class MethodsFromMartoLektor {
 		return out;
 	}
 
-	public static boolean matricesAreEqual(int[][] first, int[][] second) {
+	private static boolean matricesAreEqual(int[][] first, int[][] second) {
 		if (first.length != second.length) {
 			return false;
 		}
@@ -169,7 +167,7 @@ public class MethodsFromMartoLektor {
 		return true;
 	}
 
-	public static int[][] readMatrix(int rows, int cols, Scanner scanner, String pattern) {
+	private static int[][] readMatrix(int rows, int cols, Scanner scanner, String pattern) {
 		int[][] matrix = new int[rows][cols];
 
 		for (int row = 0; row < rows; row++) {
@@ -179,7 +177,7 @@ public class MethodsFromMartoLektor {
 		return matrix;
 	}
 
-	public static void printMatrix(char[][] matrix) {
+	private static void printMatrix(char[][] matrix) {
 		for (char[] arr : matrix) {
 			for (char element : arr) {
 				System.out.print(element + " ");
@@ -188,7 +186,7 @@ public class MethodsFromMartoLektor {
 		}
 	}
 
-	public static void printMatrix(int[][] matrix) {
+	private static void printMatrix(int[][] matrix) {
 		for (int[] arr : matrix) {
 			for (int element : arr) {
 				System.out.print(element + " ");
@@ -197,7 +195,7 @@ public class MethodsFromMartoLektor {
 		}
 	}
 
-	public static int[] readArray(String line, String pattern) {
+	private static int[] readArray(String line, String pattern) {
 		return Arrays.stream(line.split(pattern))
 				.mapToInt(Integer::parseInt)
 				.toArray();
