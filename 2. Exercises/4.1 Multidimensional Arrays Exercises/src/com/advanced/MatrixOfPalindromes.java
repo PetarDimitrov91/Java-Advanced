@@ -10,6 +10,7 @@ public class MatrixOfPalindromes {
         int cols = console.nextInt();
 
         String[][] matrix = new String[rows][cols];
+
         generateMatrix(matrix);
 
         printMatrix(matrix);
@@ -31,7 +32,6 @@ public class MatrixOfPalindromes {
                 palindrome.append(c);
             }
         }
-
     }
 
     private static void printMatrix(String[][] matrix) {

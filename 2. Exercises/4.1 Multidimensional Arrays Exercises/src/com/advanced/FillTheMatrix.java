@@ -13,7 +13,7 @@ public class FillTheMatrix {
 
         switch (pattern) {
             case "A":
-                fillMatixA(matrix);
+                fillMatrixA(matrix);
                 break;
             case "B":
                 fillMatrixB(matrix);
@@ -22,7 +22,7 @@ public class FillTheMatrix {
         printMatrix(matrix);
     }
 
-    private static void fillMatixA(int[][] matrix) {
+    private static void fillMatrixA(int[][] matrix) {
         int number = 1;
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix.length; col++) {

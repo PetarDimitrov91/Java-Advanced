@@ -11,8 +11,8 @@ public class DiagonalDifference {
 
         int[][] matrix = readMatrix(n, console);
 
-        int sumRightDiagonal = findRightDiagonalSum(matrix);
-        int sumLeftDiagonal = findLefttDiagonalSum(matrix);
+        int sumRightDiagonal = findPrimaryDiagonalSum(matrix);
+        int sumLeftDiagonal = findSecondaryDiagonalSum(matrix);
 
         System.out.println(Math.abs(sumRightDiagonal - sumLeftDiagonal));
     }
@@ -36,7 +36,7 @@ public class DiagonalDifference {
         }
     }
 
-    private static int findRightDiagonalSum(int[][] matrix) {
+    private static int findPrimaryDiagonalSum(int[][] matrix) {
         int sum = 0;
 
         for (int row = 0; row < matrix.length; row++) {
@@ -45,7 +45,7 @@ public class DiagonalDifference {
         return sum;
     }
 
-    private static int findLefttDiagonalSum(int[][] matrix) {
+    private static int findSecondaryDiagonalSum(int[][] matrix) {
         int sum = 0;
         int n = 0;
         for (int row = matrix.length; row > 0; row--) {
