@@ -1,0 +1,3 @@
+Vowels: 41
+Consonants: 72
+Punctuations: 6

@@ -39,17 +39,32 @@ public class UserLogs {
       //      entry.getValue().forEach((k,v) -> System.out.println(k + " => " + v + "."));
      //   }
 
-        for (Map.Entry<String, LinkedHashMap<String, Integer>> user: requestData.entrySet()) {
-            List<String> ipRow = new ArrayList<>();
-            System.out.printf("%s:%n", user.getKey());
-            for (Map.Entry<String, Integer> entry : user.getValue().entrySet()) {
-                ipRow.add(entry.getKey() + " => " + entry.getValue());
-            }
-            System.out.print(String.join(", ", ipRow));
-            if (ipRow.size() > 0)
-            {
-                System.out.println(".");
-            }
-        }
+     // for (Map.Entry<String, LinkedHashMap<String, Integer>> user: requestData.entrySet()) {
+     //     List<String> ipRow = new ArrayList<>();
+     //     System.out.printf("%s:%n", user.getKey());
+     //     for (Map.Entry<String, Integer> entry : user.getValue().entrySet()) {
+     //         ipRow.add(entry.getKey() + " => " + entry.getValue());
+     //     }
+     //     System.out.print(String.join(", ", ipRow));
+     //     if (ipRow.size() > 0)
+     //     {
+     //         System.out.println(".");
+     //     }
+      //  }
+
+        requestData
+                .forEach((key, value) -> {
+                    System.out.println(key + ": ");
+                    int countEntry = value.size();
+                    for (var ipEntry : value.entrySet()) {
+                        if (countEntry > 1) {
+                            System.out.println(ipEntry.getKey() + " => " + ipEntry.getValue() + ", ");
+                        } else {
+                            System.out.println(ipEntry.getKey() + " => " + ipEntry.getValue() + ".");
+                        }
+                        countEntry--;
+                    }
+                    System.out.println();
+                });
     }
 }
