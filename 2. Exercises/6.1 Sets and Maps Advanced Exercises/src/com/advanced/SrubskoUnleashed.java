@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 public class SrubskoUnleashed {
     public static void main(String[] args) throws IOException {
         BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
-       // String regex = "(?<name>[A-Za-z]+\\s*[A-Za-z]*)\\s+@(?<place>[A-Za-z]+\\s*[A-Za-z]*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
-String regex = "(?<name>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
+        String regex = "(?<name>[A-Za-z]+\\s*[A-Za-z]*)\\s+@(?<place>[A-Za-z]+\\s*[A-Za-z]*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
+        //String regex = "(?<name>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
         LinkedHashMap<String, LinkedHashMap<String, Integer>> data = new LinkedHashMap<>();
 
         Pattern pattern = Pattern.compile(regex);
@@ -20,14 +20,14 @@ String regex = "(?<name>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z]
         while (!command.equals("End")) {
             Matcher matcher = pattern.matcher(command);
 
-            String name = "";
-            String place = "";
+            String singerName = "";
+            String venue = "";
             int ticketPrice = 0;
             int ticketCount = 0;
 
             if (matcher.find()) {
-                name = matcher.group("name");
-                place = matcher.group("place");
+                singerName = matcher.group("name");
+                venue = matcher.group("place");
                 ticketPrice = Integer.parseInt(matcher.group("price"));
                 ticketCount = Integer.parseInt(matcher.group("count"));
             } else {
@@ -35,15 +35,15 @@ String regex = "(?<name>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z]
                 continue;
             }
 
-            if (!data.containsKey(place)) {
-                data.put(place, new LinkedHashMap<>());
-                data.get(place).put(name, ticketCount * ticketPrice);
+            if (!data.containsKey(venue)) {
+                data.put(venue, new LinkedHashMap<>());
+                data.get(venue).put(singerName, ticketCount * ticketPrice);
             } else {
-                if (!data.get(place).containsKey(name)) {
-                    data.get(place).put(name,  ticketCount * ticketPrice);
+                if (!data.get(venue).containsKey(singerName)) {
+                    data.get(venue).put(singerName, ticketCount * ticketPrice);
                 } else {
-                    int currentEarnings = data.get(place).get(name);
-                    data.get(place).put(name, currentEarnings + ( ticketCount * ticketPrice));
+                    int currentEarnings = data.get(venue).get(singerName);
+                    data.get(venue).put(singerName, currentEarnings + (ticketCount * ticketPrice));
                 }
             }
             command = console.readLine();
@@ -58,11 +58,11 @@ String regex = "(?<name>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z]
         //  End
 
 
-        data.forEach((k,v) -> {
+        data.forEach((k, v) -> {
             System.out.println(k);
             v.entrySet()
                     .stream()
-                    .sorted((e1 , e2) -> e2.getValue().compareTo(e1.getValue()))
+                    .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
                     .forEach(e -> System.out.println("#  " + e.getKey() + " -> " + e.getValue()));
         });
     }
