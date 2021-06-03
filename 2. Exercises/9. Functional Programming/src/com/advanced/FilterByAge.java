@@ -37,7 +37,7 @@ public class FilterByAge {
         return e -> e.getValue() <= age;
 
     }
-    public static Consumer<Map.Entry<String,Integer>> getFormatter (String format){
+    private static Consumer<Map.Entry<String,Integer>> getFormatter (String format){
         if(format.equals("name")){
             return entry -> System.out.println(entry.getKey());
         }else if(format.equals("age")){
