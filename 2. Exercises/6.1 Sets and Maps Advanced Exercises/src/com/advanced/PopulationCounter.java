@@ -22,12 +22,11 @@ public class PopulationCounter {
 
             if (!populationData.containsKey(country)) {
                 populationData.put(country, new LinkedHashMap<>());
-                populationData.get(country).put(city, population);
-                topCountyPopulationData.put(country, population);
-            } else {
-                populationData.get(country).put(city, population);
-                topCountyPopulationData.put(country, topCountyPopulationData.get(country) + population);
             }
+            populationData.get(country).put(city, population);
+            topCountyPopulationData.put(country, population);
+
+
             command = console.nextLine();
         }
 

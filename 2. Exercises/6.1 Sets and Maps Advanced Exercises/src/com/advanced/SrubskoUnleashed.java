@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 public class SrubskoUnleashed {
     public static void main(String[] args) throws IOException {
         BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
-        String regex = "(?<name>[A-Za-z]+\\s*[A-Za-z]*)\\s+@(?<place>[A-Za-z]+\\s*[A-Za-z]*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
-        //String regex = "(?<name>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
+      //  String regex = "(?<name>[A-Za-z]+\\s*[A-Za-z]*)\\s+@(?<place>[A-Za-z]+\\s*[A-Za-z]*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
+        String regex = "(?<name>[A-Z]+[A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*\\s*([A-Z]+[A-Za-z]*)*)\\s+@(?<place>[A-Z][A-Za-z]+\\s*([A-Z]+[A-Za-z]*)*)\\s+(?<price>\\d+)\\s+(?<count>\\d+)";
         LinkedHashMap<String, LinkedHashMap<String, Integer>> data = new LinkedHashMap<>();
 
         Pattern pattern = Pattern.compile(regex);

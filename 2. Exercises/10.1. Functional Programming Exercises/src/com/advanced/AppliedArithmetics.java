@@ -24,7 +24,6 @@ public class AppliedArithmetics {
             ints = chekCommand(ints, command);
             command = console.nextLine();
         }
-
     }
 
     private static List<Integer> chekCommand(List<Integer> ints, String command) {
@@ -44,7 +43,6 @@ public class AppliedArithmetics {
                 .map(e -> e - 1)
                 .collect(Collectors.toList());
 
-
         Consumer<List<Integer>> print = arr -> arr.forEach(e -> System.out.print(e + " "));
 
         switch (command) {
@@ -56,8 +54,8 @@ public class AppliedArithmetics {
                 return subtract.apply(ints);
             case "print":
                 print.accept(ints);
+                System.out.println();
         }
-
         return ints;
     }
 }
