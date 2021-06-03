@@ -3,6 +3,7 @@ package com.advanced;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class FilterByAge {
@@ -21,10 +22,28 @@ public class FilterByAge {
         int age = Integer.parseInt(console.nextLine());
         String format = console.nextLine();
 
-        Predicate<Map.Entry<String,Integer>> ageFilter = getPredecate(age,condition);
+        Predicate<Map.Entry<String, Integer>> ageFilter =
+                getAgeFilterPredecate(age, condition);
+        people.entrySet()
+                .stream()
+                .filter(getAgeFilterPredecate(age,condition))
+                .forEach(getFormatter(format));
     }
 
-    private static Predicate<Map.Entry<String, Integer>> getPredecate(int age, String condition) {
-        return null;
+    private static Predicate<Map.Entry<String, Integer>> getAgeFilterPredecate(int age, String condition) {
+        if (condition.equals("older")) {
+            return e -> e.getValue() >= age;
+        }
+        return e -> e.getValue() <= age;
+
+    }
+    public static Consumer<Map.Entry<String,Integer>> getFormatter (String format){
+        if(format.equals("name")){
+            return entry -> System.out.println(entry.getKey());
+        }else if(format.equals("age")){
+            return entry -> System.out.println(entry.getValue());
+        }
+        return entry -> System.out.println(entry.getKey() +" - " + entry.getValue());
+
     }
 }
