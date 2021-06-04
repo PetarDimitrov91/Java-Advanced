@@ -46,10 +46,14 @@ public class legendaryFarming {
             }
         }
         printObtainedMaterial(materials);
+//Map<String, TreeMap<String, Integer>> materials = new LinkedHashMap<>();
 
-        materials.forEach((k,v) -> {
-            
-        });
+
+        materials
+                .forEach((key, value) -> value.entrySet()
+                        .stream()
+                        .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+                        .forEach(e -> System.out.println(e.getKey() + ": " + e.getValue())));
     }
 
 
