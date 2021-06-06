@@ -1,10 +1,11 @@
 package bakery;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bakery {
-    private String name;
+    private final String name;
     private int capacity;
 
 
@@ -47,7 +48,25 @@ public class Bakery {
         }
         return oldestEmployee;
     }
+
+    public int getCount() {
+        return employeesData.size();
+    }
+
+
+  // public String toString() {
+  //     if (employeesData.isEmpty()) {
+  //         return null;
+  //     }
+  //     return String.format(
+  //
+  // }
+
+
     public void report() {
-        System.out.printf("Employees working at Bakery %s:");
+        System.out.printf("Employees working at Bakery %s:%n", this.name);
+        for (Employee employee : employeesData) {
+            System.out.println("Employee: " + employee);
+        }
     }
 }
