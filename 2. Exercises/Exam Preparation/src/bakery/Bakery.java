@@ -2,70 +2,85 @@ package bakery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Bakery {
-    private final String name;
+    private String name;
     private int capacity;
 
+    private List<bakery.Employee> employees;
 
-    public Bakery(String name, int capacity) {
+    public Bakery(String bakeryName, int capacity) {
+        this.name = bakeryName;
+        this.capacity = capacity;
+        this.employees = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    List<Employee> employeesData = new ArrayList<>(capacity);
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     public void add(Employee employee) {
-        if (employeesData.size() < capacity) {
-            this.employeesData.add(employee);
+        if (this.employees.size() < capacity) {
+            this.employees.add(employee);
         }
     }
 
-    public void remove(String name) {
-        employeesData.removeIf(employee -> employee.getName().equals(name));
-
+    public boolean remove(String name) {
+        return this.employees.removeIf(employee -> employee.getName().contains(name));
     }
 
-    public Employee getEmployee(String name) {
-        for (Employee employee : employeesData) {
-            if (employee.getName().equals(name)) {
-                return employee;
-            }
-        }
-        return null;
-    }
-
-    public Employee GetOldestEmployee() {
-        int age = 0;
+    public Employee getOldestEmployee() {
         Employee oldestEmployee = null;
-        for (Employee employee : employeesData) {
-            int currentEmployeeAge = employee.getAge();
-            if (age < currentEmployeeAge) {
-                age = currentEmployeeAge;
+        int age = 0;
+        for (Employee employee : this.employees) {
+            if (employee.getAge() > age) {
+                age = employee.getAge();
                 oldestEmployee = employee;
             }
         }
         return oldestEmployee;
     }
 
-    public int getCount() {
-        return employeesData.size();
+    public Employee getEmployee(String name) {
+        Employee searchedEmployee = null;
+        for (Employee employee : this.employees) {
+            if (employee.getName().contains(name)) {
+                searchedEmployee = employee;
+            }
+        }
+        return searchedEmployee;
     }
 
+    public int getCount() {
+        return this.employees.size();
+    }
 
-  // public String toString() {
-  //     if (employeesData.isEmpty()) {
-  //         return null;
-  //     }
-  //     return String.format(
-  //
-  // }
-
-
-    public void report() {
-        System.out.printf("Employees working at Bakery %s:%n", this.name);
-        for (Employee employee : employeesData) {
-            System.out.println("Employee: " + employee);
-        }
+    public String report() {
+            return this.employees
+                    .stream()
+                    .map(employee -> employee.toString() + "\n")
+                    .collect(Collectors.joining
+                            ("", String.format("Employees working at Bakery %s:", this.name) + "\n", ""));
     }
 }

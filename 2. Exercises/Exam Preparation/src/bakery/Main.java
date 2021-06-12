@@ -3,18 +3,31 @@ package bakery;
 public class Main {
     public static void main(String[] args) {
         Bakery bakery = new Bakery("Barny", 10);
-        Employee employee = new Employee("Stephan", 40, "(Bulgaria)");
-        Employee employee1 = new Employee("Petar", 99, "(Bulgaria)");
-        Employee employee2 = new Employee("Ivan", 26, "(Bulgaria)");
-        Employee employee3 = new Employee("Georgi", 18, "(Bulgaria)");
+//Initialize entity
+      //  Employee employee = new Employee("Stephen", 40, "Bulgaria");
+//Print Employee
+      //  System.out.println(employee); //Employee: Stephen, 40 (Bulgaria)
 
-        bakery.add(employee);
-        bakery.add(employee1);
-        bakery.add(employee2);
-        bakery.add(employee3);
-        bakery.remove("Petar");
-        bakery.report();
-        //   System.out.println(bakery.getCount());
+//Add Employee
+    //    bakery.add(employee);
+//Remove Employee
+    //    System.out.println(bakery.remove("Employee name")); //false
 
+      //  Employee secondEmployee = new Employee("Mark", 34, "UK");
+
+//Add Employee
+       // bakery.add(secondEmployee);
+
+    //   Employee oldestEmployee = bakery.getOldestEmployee(); // Employee with name Stephen
+    //   Employee employeeStephen = bakery.getEmployee("Stephen"); // Employee with name Stephen
+    //   System.out.println(oldestEmployee); //Employee: Stephen, 40 (Bulgaria)
+    //   System.out.println(employeeStephen); //Employee: Stephen, 40 (Bulgaria)
+
+        System.out.println(bakery.getCount()); //2
+
+        System.out.println(bakery.report());
+//Employees working at Bakery Barny:
+//Employee: Stephen, 40 (Bulgaria)
+//Employee: Mark, 34 (UK)
     }
 }
