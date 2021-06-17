@@ -1,4 +1,4 @@
-package Task1;
+package Task2;
 
 import java.util.Scanner;
 
@@ -48,7 +48,6 @@ public class Bee {
                         }
                     }
 
-
                     break;
                 case "down":
                     beeTerritory[rowOfBee][colOfBee] = ".";
@@ -68,7 +67,6 @@ public class Bee {
                         }
                     }
 
-
                     break;
                 case "left":
                     beeTerritory[rowOfBee][colOfBee] = ".";
@@ -87,7 +85,6 @@ public class Bee {
                             pollinatedFlowers++;
                         }
                     }
-
 
                     break;
                 case "right":
@@ -126,7 +123,6 @@ public class Bee {
 
         printMatrix(beeTerritory);
     }
-
 
     private static String[][] readMatrix(Scanner console, int n) {
         String[][] matrix = new String[n][n];
