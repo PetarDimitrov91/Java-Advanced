@@ -1,19 +1,15 @@
 package StrategyPattern;
 
 import java.util.Comparator;
+import java.util.Locale;
 
 public class NameLengthComparator implements Comparator<Person> {
     @Override
     public int compare(Person first, Person second) {
-        if (first.getName().compareTo(second.getName()) == 0) {
-            if (first.getName().charAt(0) > second.getName().charAt(0)) {
-                return 1;
-            } else if (first.getName().charAt(0) < second.getName().charAt(0)) {
-                return -1;
-            }
-            return 0;
-        } else {
-            return first.getName().compareTo(second.getName());
+        int result = Integer.compare(first.getName().length(), second.getName().length());
+        if (result == 0) {
+            result = Integer.compare(first.getName().toLowerCase(Locale.ROOT).charAt(0), second.getName().toLowerCase(Locale.ROOT).charAt(0));
         }
+        return result;
     }
 }

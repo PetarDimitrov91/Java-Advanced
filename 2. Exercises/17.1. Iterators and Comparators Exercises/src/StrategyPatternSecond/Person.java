@@ -1,4 +1,6 @@
-package StrategyPattern;
+package StrategyPatternSecond;
+
+import java.util.Comparator;
 
 public class Person {
     private String name;
@@ -18,8 +20,7 @@ public class Person {
     }
 
     @Override
-    public String toString(){
-        return String.format("%s %d",this.name,this.age);
+    public String toString() {
+        return name + " " + age;
     }
-
 }
