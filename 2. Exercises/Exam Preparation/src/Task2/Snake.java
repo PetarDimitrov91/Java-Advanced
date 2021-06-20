@@ -3,10 +3,10 @@ package Task2;
 import java.util.Scanner;
 
 public class Snake {
-    public static int snakeRow = -1, snakeCol = -1, foodEaten = 0;
-    public static int firstLairRow = -1, firstLairCol = -1, secondLairRow = -1, secondLairCol = -1;
-    public static boolean isLair = false;
-    public static boolean isInBounds = true;
+    static int snakeRow = -1, snakeCol = -1, foodEaten = 0;
+    static int firstLairRow = -1, firstLairCol = -1, secondLairRow = -1, secondLairCol = -1;
+    static boolean isLair = false;
+    static boolean isInBounds = true;
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
