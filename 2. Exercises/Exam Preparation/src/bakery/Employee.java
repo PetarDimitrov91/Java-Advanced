@@ -37,7 +37,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format("Employee: %s, %d (%s)", this.name, this.age, this.country);
+        return String.format("Employee: %s, %d (%s)", this.name, this.age, this.country).trim();
     }
 
 }

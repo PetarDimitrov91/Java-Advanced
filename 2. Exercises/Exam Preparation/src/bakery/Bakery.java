@@ -81,6 +81,6 @@ public class Bakery {
                     .stream()
                     .map(employee -> employee.toString() + "\n")
                     .collect(Collectors.joining
-                            ("", String.format("Employees working at Bakery %s:", this.name) + "\n", ""));
+                            ("", String.format("Employees working at Bakery %s:", this.name) + "\n", "")).trim();
     }
 }

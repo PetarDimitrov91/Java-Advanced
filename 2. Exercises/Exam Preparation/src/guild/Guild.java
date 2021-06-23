@@ -92,6 +92,6 @@ public class Guild {
         for (Player player : roster) {
             b.append(player.toString()).append(System.lineSeparator());
         }
-        return b.toString();
+        return b.toString().trim();
     }
 }
