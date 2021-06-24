@@ -2,13 +2,14 @@ package bakery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Bakery {
     private String name;
     private int capacity;
 
-    private List<bakery.Employee> employees;
+    private List<Employee> employees;
 
     public Bakery(String bakeryName, int capacity) {
         this.name = bakeryName;
@@ -47,7 +48,18 @@ public class Bakery {
     }
 
     public boolean remove(String name) {
-        return this.employees.removeIf(employee -> employee.getName().contains(name));
+        int n = -1;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getName().equals(name)) {
+                n = i;
+                break;
+            }
+        }
+        if (n != -1) {
+            employees.remove(n);
+            return true;
+        }
+        return false;
     }
 
     public Employee getOldestEmployee() {
@@ -77,10 +89,14 @@ public class Bakery {
     }
 
     public String report() {
-            return this.employees
-                    .stream()
-                    .map(employee -> employee.toString() + "\n")
-                    .collect(Collectors.joining
-                            ("", String.format("Employees working at Bakery %s:", this.name) + "\n", "")).trim();
+     //  return this.employees
+     //          .stream()
+     //          .map(employee -> employee.toString() + "\n")
+     //          .collect(Collectors.joining
+     //                  ("", String.format("Employees working at Bakery %s:", this.name) + "\n", "")).trim();
+
+        return String.format("Employees working at Bakery %s:%n%s",this.name,employees.stream()
+        .map(Objects::toString)
+        .collect(Collectors.joining(System.lineSeparator())));
     }
 }

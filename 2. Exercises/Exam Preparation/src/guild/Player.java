@@ -49,6 +49,6 @@ public class Player {
     public String toString() {
         return String.format("Player %s: %s%n" +
                 "Rank: %s%n" +
-                "Description: %s", getName(), getClazz(), getRank(), getDescription()).trim();
+                "Description: %s", this.name, this.clazz, this.rank, this.description);
     }
 }
